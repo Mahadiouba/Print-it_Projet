@@ -26,7 +26,19 @@ const dots = document.querySelectorAll(".dot");
 
 let navPosition = 0;
 let i = 0;
+
 /* Mettre un event listener sur chacune des flèches */
+
+arrowRight.addEventListener("click", () => {
+  // incrementation navPosition variable
+  navPosition++;
+  // length table when at right
+  if (navPosition === slides.length) {
+    navPosition = 0;
+  }
+  genererImage(navPosition);
+  updateDots(navPosition);
+});
 
 arrowLeft.addEventListener("click", () => {
   // décrémentation navPosition variable
@@ -40,20 +52,7 @@ arrowLeft.addEventListener("click", () => {
   updateDots(navPosition);
 });
 
-console.log(arrowLeft);
-
-arrowRight.addEventListener("click", () => {
-  // incrementation navPosition variable
-  navPosition++;
-  // length table when at right
-  if (navPosition === slides.length) {
-    navPosition = 0;
-  }
-  genererImage(navPosition);
-  updateDots(navPosition);
-});
-
-console.log(arrowRight);
+/* Fonction pour generer l'image */
 
 function genererImage(navPosition) {
   // select the image and text from the banner
@@ -64,8 +63,6 @@ function genererImage(navPosition) {
   baliseImage.src = `./assets/images/slideshow/` + slides[navPosition].image;
   baliseP.innerHTML = slides[navPosition].tagLine;
 }
-
-console.log(genererImage);
 
 /* Ajouter les bullet points sur la partie basse du slider */
 
@@ -79,4 +76,3 @@ function updateDots(navPosition) {
   });
 }
 
-console.log(updateDots);
