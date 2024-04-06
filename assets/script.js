@@ -19,7 +19,6 @@ const slides = [
 ];
 console.log(slides);
 
-const bannerImg = document.querySelector(".banner-img");
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 const dots = document.querySelectorAll(".dot");
@@ -36,8 +35,8 @@ arrowRight.addEventListener("click", () => {
   if (navPosition === slides.length) {
     navPosition = 0;
   }
-  genererImage(navPosition);
-  updateDots(navPosition);
+  genererImage();
+  updateDots();
 });
 
 arrowLeft.addEventListener("click", () => {
@@ -48,13 +47,13 @@ arrowLeft.addEventListener("click", () => {
     navPosition = slides.length -1
   }
   
-  genererImage(navPosition);
-  updateDots(navPosition);
+  genererImage();
+  updateDots();
 });
 
 /* Fonction pour generer l'image */
 
-function genererImage(navPosition) {
+function genererImage() {
   // select the image and text from the banner
   const baliseImage = document.querySelector(".banner-img");
   const baliseP = document.querySelector("#banner p");
@@ -66,7 +65,7 @@ function genererImage(navPosition) {
 
 /* Ajouter les bullet points sur la partie basse du slider */
 
-function updateDots(navPosition) {
+function updateDots() {
   dots.forEach((dot, i) => {
     if (i === navPosition) {
       dot.classList.add("dot_selected");
